@@ -1,12 +1,10 @@
-let appSettings = {
-    counter: 0,
-    switcher: false
-};
+let appSettings = {};
+console.clear();
 
-function customResizeCanvas() {
-    const dim = Math.min(windowHeight, windowWidth) * 0.9;
-    resizeCanvas(dim, dim);
-}
+const D = 25;
+
+let cells;
+let size;
 
 function setup() {
     app = new Vue({
@@ -15,20 +13,27 @@ function setup() {
     });
 
     // Create the canvas and put it in its div
-    const myCanvas = createCanvas(400, 400);
-    // customResizeCanvas();
+    const myCanvas = createCanvas(800, 800);
     myCanvas.parent('canvasDiv');
+    colorMode(HSB);
+    // initInterface();
 
-    initInterface();
+    size = width / D;
+    cells = noiseGradient();
 }
 
+let cpt = 0;
 function draw() {
-    let col = [100, 100, 100];
-    if (appSettings.switcher) {
-        col = [200, 200, 200];
-    }
-    appSettings.counter = (appSettings.counter + 1) % width;
-    background(...col);
+    background(0, 0, 0);
     fill('blue');
-    ellipse(appSettings.counter, height / 2, 50);
+    noStroke();
+    cpt++;
+
+    cells = noiseGradient(cpt);
+    for (let y = 0; y < D; y++) {
+        for (let x = 0; x < D; x++) {
+            fill(cells[y][x]);
+            rect(x * size, y * size, size, size);
+        }
+    }
 }

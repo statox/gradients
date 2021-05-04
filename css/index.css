@@ -1,7 +1,16 @@
-div#appDiv button.active {
-    background: #38b57e;
+header {
+    background: #666666;
+    text-align: center;
 }
-
-div#appDiv button.inactive {
-    background: #d37676;
+body {
+    background: #000000;
 }
+/*
+ * div#appDiv button.active {
+ *     background: #38b57e;
+ * }
+ * 
+ * div#appDiv button.inactive {
+ *     background: #d37676;
+ * }
+ */
