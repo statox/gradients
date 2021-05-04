@@ -1,4 +1,4 @@
-function noiseGradient(c1, c2, time) {
+function noiseTimeGradient(c1, c2, time) {
     const c = [];
     let i = 0;
     for (let y = 0; y < D; y++) {
