@@ -35,18 +35,7 @@ function draw() {
     noStroke();
     time++;
 
-    const nOff1 = time * 0.01;
-    const n1 = noise(nOff1);
-    const hue1 = map(n1, 0, 1, 0, 360);
-    c1 = color(hue1, 82, 40);
-
-    const nOff2 = (time + 100) * 0.02;
-    const n2 = noise(nOff2);
-    const hue2 = map(n2, 0, 1, 0, 360);
-    c2 = color(hue2, 82, 40);
-
-    cells = noiseTimeGradient(c1, c2, time);
-    // cells = noiseTimeGradient(c1, c2, 1);
+    cells = noiseTimeGradient(time);
     for (let y = 0; y < D; y++) {
         for (let x = 0; x < D; x++) {
             fill(cells[y][x]);
